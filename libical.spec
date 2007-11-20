@@ -10,7 +10,6 @@ License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://sourceforge.net/projects/freeassociation/
 Source:		http://downloads.sourceforge.net/freeassociation/%{name}-%{version}.tar.bz2
-#BuildRequires:	flex
 BuildRequires:	libdb4.2-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
