@@ -33,6 +33,8 @@ the component properties, parameters, and subcomponents.
 %package -n %{develname}
 Summary:	Files for developing applications that use libical
 Group:		Development/C
+Provides:	%{name}-devel = %{version}-%{release}
+Provides:	lib%{name}-devel = %{version}-%{release}
 Requires:	%{libname} = %{version}-%{release}
 
 %description -n %{develname}
