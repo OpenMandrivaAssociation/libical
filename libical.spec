@@ -5,7 +5,7 @@
 Summary:	An implementation of basic iCAL protocols
 Name:		libical
 Version:	0.27
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://sourceforge.net/projects/freeassociation/
@@ -34,6 +34,7 @@ Summary:	Files for developing applications that use libical
 Group:		Development/C
 Provides:	%{name}-devel = %{version}-%{release}
 Requires:	%{libname} = %{version}-%{release}
+Obsoletes:	%mklibname ical 0 -d
 
 %description -n %{develname}
 The header files and libtool library for
