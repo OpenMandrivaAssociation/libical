@@ -4,13 +4,13 @@
 
 Summary:	An implementation of basic iCAL protocols
 Name:		libical
-Version:	0.27
-Release:	%mkrel 3
+Version:	0.30
+Release:	%mkrel 1
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://sourceforge.net/projects/freeassociation/
-Source:		http://downloads.sourceforge.net/freeassociation/%{name}-%{version}.tar.bz2
-BuildRequires:	libdb4.2-devel
+Source:		http://downloads.sourceforge.net/freeassociation/%{name}-%{version}.tar.gz
+BuildRequires:	db4-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
@@ -49,10 +49,11 @@ developing applications that use libical.
 	--enable-reentrant \
 	--with-devel \
 	--with-bdb4 \
-	--with-bdb4-dir=%{prefix}
+	--with-bdb4-dir=%{_prefix}
 %make
 
 %install
+rm -fr %buildroot
 %makeinstall_std
 
 %post -n %{libname} -p /sbin/ldconfig
@@ -61,11 +62,10 @@ developing applications that use libical.
 
 %files -n %{libname}
 %{_libdir}/*.so.%{major}*
-%{_datadir}/%{name}
 
 %files -n %{develname}
 %doc README TODO ChangeLog NEWS TEST THANKS
 %doc doc/UsingLibical*
 %{_includedir}/*
 %{_libdir}/*.so
-%{_libdir}/*a*
+%{_libdir}/*.la
