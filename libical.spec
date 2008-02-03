@@ -11,6 +11,7 @@ Group:		System/Libraries
 Url:		http://sourceforge.net/projects/freeassociation/
 Source:		http://downloads.sourceforge.net/freeassociation/%{name}-%{version}.tar.gz
 BuildRequires:	db4-devel
+BuildRequires:	flex
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
