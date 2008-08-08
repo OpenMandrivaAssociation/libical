@@ -5,7 +5,7 @@
 Summary:	An implementation of basic iCAL protocols
 Name:		libical
 Version:	0.31
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://sourceforge.net/projects/freeassociation/
