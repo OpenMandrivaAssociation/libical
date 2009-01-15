@@ -1,12 +1,13 @@
-
 Name: libical
-Version: 0.41
+Version: 0.43
 Release: %mkrel 1
 Summary: An implementation of basic iCAL protocols
 License: LGPLv2+
 Group: System/Libraries
 Url: http://sourceforge.net/projects/freeassociation/
-Source: http://downloads.sourceforge.net/freeassociation/%{name}-%{version}.tar.gz
+Source0: http://downloads.sourceforge.net/freeassociation/%{name}-%{version}.tar.gz
+# (fc) 0.43-1mdv fix format security error
+Patch0:	libical-0.43-format-security.patch
 BuildRequires: db4-devel
 BuildRequires: flex
 BuildRequires: bison
@@ -94,6 +95,7 @@ developing applications that use libical.
 
 %prep
 %setup -q
+%patch0 -p1 -b .format-security
 
 %build
 %cmake
