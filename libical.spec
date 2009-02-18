@@ -1,6 +1,6 @@
 Name: libical
 Version: 0.43
-Release: %mkrel 1
+Release: %mkrel 2
 Summary: An implementation of basic iCAL protocols
 License: LGPLv2+
 Group: System/Libraries
@@ -98,7 +98,7 @@ developing applications that use libical.
 %patch0 -p1 -b .format-security
 
 %build
-%cmake
+%cmake -DICAL_ERRORS_ARE_FATAL=false
 
 # Not ready for nproc
 make
