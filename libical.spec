@@ -1,6 +1,6 @@
 Name: libical
 Version: 0.43
-Release: %mkrel 2
+Release: %mkrel 3
 Summary: An implementation of basic iCAL protocols
 License: LGPLv2+
 Group: System/Libraries
