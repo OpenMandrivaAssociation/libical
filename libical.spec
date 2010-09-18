@@ -1,5 +1,5 @@
 Name: libical
-Version: 0.44
+Version: 0.46
 Release: %mkrel 1
 Summary: An implementation of basic iCAL protocols
 License: LGPLv2+
@@ -122,4 +122,3 @@ rm -fr %buildroot
 %{_libdir}/*.a
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*
-
