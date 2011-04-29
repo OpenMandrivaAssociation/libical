@@ -8,7 +8,7 @@ Url: http://sourceforge.net/projects/freeassociation/
 Source0: http://downloads.sourceforge.net/freeassociation/%{name}-%{version}.tar.gz
 # (fc) 0.43-1mdv fix format security error
 Patch0:	libical-0.43-format-security.patch
-BuildRequires: db4-devel
+BuildRequires: db-devel
 BuildRequires: flex
 BuildRequires: bison
 Buildrequires: cmake
