@@ -1,18 +1,15 @@
 Name: libical
-Version: 0.46
-Release: %mkrel 2
+Version: 0.48
+Release: 1
 Summary: An implementation of basic iCAL protocols
 License: LGPLv2+
 Group: System/Libraries
 Url: http://sourceforge.net/projects/freeassociation/
 Source0: http://downloads.sourceforge.net/freeassociation/%{name}-%{version}.tar.gz
-# (fc) 0.43-1mdv fix format security error
-Patch0:	libical-0.43-format-security.patch
 BuildRequires: db-devel
 BuildRequires: flex
 BuildRequires: bison
 Buildrequires: cmake
-BuildRoot: %{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 Libical is an Open Source implementation of the IETF's iCalendar
@@ -95,7 +92,6 @@ developing applications that use libical.
 
 %prep
 %setup -q
-%patch0 -p1 -b .format-security
 
 %build
 %cmake -DICAL_ERRORS_ARE_FATAL=false
@@ -104,16 +100,7 @@ developing applications that use libical.
 make
 
 %install
-rm -fr %buildroot
 %makeinstall_std -C build
-
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%endif
-
-%if %mdkversion < 200900
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
 
 %files -n %{develname}
 %doc README TODO ChangeLog NEWS TEST THANKS
