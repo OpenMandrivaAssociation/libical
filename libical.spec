@@ -86,7 +86,7 @@ make
 %{_libdir}/libicalss.so.%{major}*
 
 %files -n %{libnamevcal}
-%{_libdir}/libvcal.so.%{major}*
+%{_libdir}/libicalvcal.so.%{major}*
 
 %files -n %{devname}
 %doc README TODO ChangeLog NEWS TEST THANKS
