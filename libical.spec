@@ -6,7 +6,7 @@
 
 Name:		libical
 Version:	0.48
-Release:	6
+Release:	7
 Summary:	An implementation of basic iCAL protocols
 License:	LGPLv2+
 Group:		System/Libraries
