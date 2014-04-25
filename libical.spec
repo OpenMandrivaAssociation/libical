@@ -86,6 +86,12 @@ make
 
 %files -n %{libname}
 %{_libdir}/libical.so.%{major}*
+%{_libdir}/libical.so.1
+%{_libdir}/libical.so.1.0.0
+%{_libdir}/libicalss.so.1
+%{_libdir}/libicalss.so.1.0.0
+%{_libdir}/libicalvcal.so.1
+%{_libdir}/libicalvcal.so.1.0.0
 
 %files -n %{libnamess}
 %{_libdir}/libicalss.so.%{major}*
