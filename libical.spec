@@ -5,9 +5,10 @@
 %define devname %mklibname ical -d
 
 Name:		libical
-Version:	0.48
-Release:	10
+Version:	1.0
+Release:	1
 Summary:	An implementation of basic iCAL protocols
+
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://sourceforge.net/projects/freeassociation/
@@ -25,6 +26,7 @@ the component properties, parameters, and subcomponents.
 
 %package -n %{libname}
 Summary:	Files for developing applications that use libical
+
 Group:		System/Libraries
 
 %description -n %{libname}
@@ -35,6 +37,7 @@ the component properties, parameters, and subcomponents.
 
 %package -n %{libnamess}
 Summary:	Files for developing applications that use libical
+
 Group:		System/Libraries
 
 %description -n %{libnamess}
@@ -45,6 +48,7 @@ the component properties, parameters, and subcomponents.
 
 %package -n %{libnamevcal}
 Summary:	Files for developing applications that use libical
+
 Group:		System/Libraries
 
 %description -n %{libnamevcal}
@@ -55,6 +59,7 @@ the component properties, parameters, and subcomponents.
 
 %package -n %{devname}
 Summary:	Files for developing applications that use libical
+
 Group:		Development/C
 Provides:	%{name}-devel = %{version}-%{release}
 Requires:	%{libname} = %{version}-%{release}
@@ -95,4 +100,5 @@ make
 %{_libdir}/*.a
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*
+
 
