@@ -1,4 +1,4 @@
-%define major 0
+%define major 1
 %define libname %mklibname ical %{major}
 %define libnamess %mklibname icalss %{major}
 %define libnamevcal %mklibname icalvcal %{major}
@@ -86,12 +86,6 @@ make
 
 %files -n %{libname}
 %{_libdir}/libical.so.%{major}*
-%{_libdir}/libical.so.1
-%{_libdir}/libical.so.1.0.0
-%{_libdir}/libicalss.so.1
-%{_libdir}/libicalss.so.1.0.0
-%{_libdir}/libicalvcal.so.1
-%{_libdir}/libicalvcal.so.1.0.0
 
 %files -n %{libnamess}
 %{_libdir}/libicalss.so.%{major}*
