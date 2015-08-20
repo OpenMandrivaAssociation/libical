@@ -5,14 +5,14 @@
 %define devname %mklibname ical -d
 
 Name:		libical
-Version:	1.0
-Release:	6
+Version:	1.0.1
+Release:	1
 Summary:	An implementation of basic iCAL protocols
 
 License:	LGPLv2+
 Group:		System/Libraries
-Url:		http://sourceforge.net/projects/freeassociation/
-Source0:	http://downloads.sourceforge.net/freeassociation/%{name}-%{version}.tar.gz
+Url:		https://github.com/libical/libical
+Source0:	https://github.com/libical/libical/releases/download/v%{version}/libical-%{version}.tar.gz
 BuildRequires:	bison
 Buildrequires:	cmake
 BuildRequires:	flex
@@ -94,11 +94,10 @@ make
 %{_libdir}/libicalvcal.so.%{major}*
 
 %files -n %{devname}
-%doc README TODO ChangeLog NEWS TEST THANKS
+%doc TODO TEST THANKS
 %doc doc/UsingLibical*
 %{_includedir}/*
 %{_libdir}/*.a
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*
-
-
+%{_libdir}/cmake/LibIcal
