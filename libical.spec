@@ -6,7 +6,7 @@
 
 Name:		libical
 Version:	1.0.1
-Release:	2
+Release:	3
 Summary:	An implementation of basic iCAL protocols
 
 License:	LGPLv2+
