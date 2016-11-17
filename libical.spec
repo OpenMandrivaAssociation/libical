@@ -1,4 +1,4 @@
-%define major 1
+%define major 2
 %define libname %mklibname ical %{major}
 %define libnamess %mklibname icalss %{major}
 %define libnamevcal %mklibname icalvcal %{major}
