@@ -5,10 +5,9 @@
 %define devname %mklibname ical -d
 
 Name:		libical
-Version:	1.0.1
-Release:	3
+Version:	2.0.0
+Release:	1
 Summary:	An implementation of basic iCAL protocols
-
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		https://github.com/libical/libical
@@ -26,7 +25,6 @@ the component properties, parameters, and subcomponents.
 
 %package -n %{libname}
 Summary:	Files for developing applications that use libical
-
 Group:		System/Libraries
 
 %description -n %{libname}
@@ -37,7 +35,6 @@ the component properties, parameters, and subcomponents.
 
 %package -n %{libnamess}
 Summary:	Files for developing applications that use libical
-
 Group:		System/Libraries
 
 %description -n %{libnamess}
@@ -48,7 +45,6 @@ the component properties, parameters, and subcomponents.
 
 %package -n %{libnamevcal}
 Summary:	Files for developing applications that use libical
-
 Group:		System/Libraries
 
 %description -n %{libnamevcal}
@@ -59,7 +55,6 @@ the component properties, parameters, and subcomponents.
 
 %package -n %{devname}
 Summary:	Files for developing applications that use libical
-
 Group:		Development/C
 Provides:	%{name}-devel = %{version}-%{release}
 Requires:	%{libname} = %{version}-%{release}
@@ -75,11 +70,10 @@ developing applications that use libical.
 %setup -q
 
 %build
-%cmake \
-	-DICAL_ERRORS_ARE_FATAL=false
+%cmake -DICAL_ERRORS_ARE_FATAL=false
 
 # Not ready for nproc
-make
+%make -j1
 
 %install
 %makeinstall_std -C build
