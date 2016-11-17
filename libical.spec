@@ -2,6 +2,8 @@
 %define libname %mklibname ical %{major}
 %define libnamess %mklibname icalss %{major}
 %define libnamevcal %mklibname icalvcal %{major}
+%define libname_cxx %mklibname ical_cxx %{major}
+%define libnamess_cxx %mklibname icalss_cxx %{major}
 %define devname %mklibname ical -d
 
 Name:		libical
@@ -53,6 +55,26 @@ Calendaring and Scheduling protocols (RFC 2445, 2446, and 2447).
 It parses iCal components and provides a C API for manipulating
 the component properties, parameters, and subcomponents.
 
+%package -n %{libname_cxx}
+Summary:	Files for developing applications that use libical
+Group:		System/Libraries
+
+%description -n %{libname_cxx}
+Libical is an Open Source implementation of the IETF's iCalendar
+Calendaring and Scheduling protocols (RFC 2445, 2446, and 2447).
+It parses iCal components and provides a C API for manipulating
+the component properties, parameters, and subcomponents.
+
+%package -n %{libnamess_cxx}
+Summary:	Files for developing applications that use libical
+Group:		System/Libraries
+
+%description -n %{libnamess_cxx}
+Libical is an Open Source implementation of the IETF's iCalendar
+Calendaring and Scheduling protocols (RFC 2445, 2446, and 2447).
+It parses iCal components and provides a C API for manipulating
+the component properties, parameters, and subcomponents.
+
 %package -n %{devname}
 Summary:	Files for developing applications that use libical
 Group:		Development/C
@@ -60,6 +82,8 @@ Provides:	%{name}-devel = %{version}-%{release}
 Requires:	%{libname} = %{version}-%{release}
 Requires:	%{libnamess} = %{version}-%{release}
 Requires:	%{libnamevcal} = %{version}-%{release}
+Requires:	%{libname_cxx} = %{version}-%{release}
+Requires:	%{libnamess_cxx} = %{version}-%{release}
 Obsoletes:	%mklibname ical 0 -d
 
 %description -n %{devname}
@@ -86,6 +110,12 @@ developing applications that use libical.
 
 %files -n %{libnamevcal}
 %{_libdir}/libicalvcal.so.%{major}*
+
+%files -n %{libname_cxx}
+%{_libdir}/libical_cxx.so.%{major}*
+
+%files -n %{libnamess_cxx}
+%{_libdir}/libicalss_cxx.so.%{major}*
 
 %files -n %{devname}
 %doc TODO TEST THANKS
