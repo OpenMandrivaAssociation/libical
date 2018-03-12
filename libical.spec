@@ -9,7 +9,7 @@
 %define glibdevname %mklibname ical-glib -d
 
 Name:		libical
-Version:	3.0.2
+Version:	3.0.3
 Release:	1
 Summary:	An implementation of basic iCAL protocols
 License:	LGPLv2+
