@@ -22,6 +22,7 @@ BuildRequires:	flex
 BuildRequires:	db-devel
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(libxml-2.0)
+BuildRequires:	pkgconfig(gtk-doc)
 
 %description
 Libical is an Open Source implementation of the IETF's iCalendar
