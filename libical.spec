@@ -10,7 +10,7 @@
 
 Name:		libical
 Version:	3.0.3
-Release:	1
+Release:	2
 Summary:	An implementation of basic iCAL protocols
 License:	LGPLv2+
 Group:		System/Libraries
@@ -99,6 +99,7 @@ Requires:	%{libnamess} = %{EVRD}
 Requires:	%{libnamevcal} = %{EVRD}
 Requires:	%{libname_cxx} = %{EVRD}
 Requires:	%{libnamess_cxx} = %{EVRD}
+Requires:	db-devel
 Obsoletes:	%mklibname ical 0 -d
 
 %description -n %{devname}
