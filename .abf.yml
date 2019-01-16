@@ -1,4 +1,5 @@
 removed_sources:
   libical-3.0.2.tar.gz: 76ad6b54e644706f912fd448706d41e102c21eaf
-sources:
   libical-3.0.3.tar.gz: 6667872622e54c4a9ad0c99622f0a56e713e255b
+sources:
+  libical-3.0.4.tar.gz: f22813c6459d4ca4627d15fef8282127b72fbe06
