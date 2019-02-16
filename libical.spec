@@ -9,8 +9,8 @@
 %define glibdevname %mklibname ical-glib -d
 
 Name:		libical
-Version:	3.0.3
-Release:	4
+Version:	3.0.4
+Release:	1
 Summary:	An implementation of basic iCAL protocols
 License:	LGPLv2+
 Group:		System/Libraries
@@ -19,7 +19,7 @@ Source0:	https://github.com/libical/libical/releases/download/v%{version}/libica
 BuildRequires:	bison
 Buildrequires:	cmake
 BuildRequires:	flex
-BuildRequires:	db-devel
+BuildRequires:	db-devel >= 18.1
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(gtk-doc)
