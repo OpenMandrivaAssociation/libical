@@ -10,15 +10,17 @@
 
 Name:		libical
 Version:	3.0.5
-Release:	1
+Release:	2
 Summary:	An implementation of basic iCAL protocols
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		https://github.com/libical/libical
 Source0:	https://github.com/libical/libical/releases/download/v%{version}/libical-%{version}.tar.gz
+Patch0:		libical-3.0.5-no-Lusrlib.patch
 BuildRequires:	bison
 Buildrequires:	cmake
 BuildRequires:	flex
+BuildRequires:	ninja
 BuildRequires:	db-devel >= 18.1
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(libxml-2.0)
@@ -118,17 +120,14 @@ developing applications that use libical
 and glib.
 
 %prep
-%setup -q
+%autosetup -p1
+%cmake -DICAL_ERRORS_ARE_FATAL=false -G Ninja
 
 %build
-%cmake -DICAL_ERRORS_ARE_FATAL=false
-
-# Not ready for nproc
-%make
-# -j1
+%ninja_build -C build
 
 %install
-%makeinstall_std -C build
+%ninja_install -C build
 
 %files -n %{libname}
 %{_libdir}/libical.so.%{major}*

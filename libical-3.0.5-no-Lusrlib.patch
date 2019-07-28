@@ -1,0 +1,28 @@
+diff -up libical-3.0.5/libical.pc.in.omv~ libical-3.0.5/libical.pc.in
+--- libical-3.0.5/libical.pc.in.omv~	2019-07-28 18:24:10.985062528 +0200
++++ libical-3.0.5/libical.pc.in	2019-07-28 18:26:04.166361720 +0200
+@@ -6,7 +6,6 @@ includedir=@includedir@
+ Name: libical
+ Description: An implementation of basic iCAL protocols
+ Version: @LIBICAL_LIB_VERSION_STRING@
+-Libs: -L${libdir} -lical -licalss -licalvcal
++Libs: -lical -licalss -licalvcal
+ Libs.private: @PTHREAD_LIBS@
+ @REQUIRES_PRIVATE_ICU@
+-Cflags: -I${includedir}
+diff -up libical-3.0.5/src/libical-glib/libical-glib.pc.in.omv~ libical-3.0.5/src/libical-glib/libical-glib.pc.in
+--- libical-3.0.5/src/libical-glib/libical-glib.pc.in.omv~	2019-07-28 18:26:10.019325559 +0200
++++ libical-3.0.5/src/libical-glib/libical-glib.pc.in	2019-07-28 18:26:28.104213875 +0200
+@@ -1,11 +1,7 @@
+ prefix=@prefix@
+-exec_prefix=@exec_prefix@
+-libdir=@libdir@
+-includedir=@includedir@
+ 
+ Name: libical-glib
+ Description: A GObject interface of the libical library
+ Version: @LIBICAL_LIB_VERSION_STRING@
+ Requires: glib-2.0, gobject-2.0, libical
+-Cflags: -I${includedir}
+-Libs: -L${libdir} -lical-glib
++Libs: -lical-glib
