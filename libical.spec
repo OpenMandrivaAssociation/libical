@@ -9,14 +9,17 @@
 %define glibdevname %mklibname ical-glib -d
 
 Name:		libical
-Version:	3.0.5
-Release:	2
+Version:	3.0.6
+Release:	1
 Summary:	An implementation of basic iCAL protocols
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		https://github.com/libical/libical
 Source0:	https://github.com/libical/libical/releases/download/v%{version}/libical-%{version}.tar.gz
 Patch0:		libical-3.0.5-no-Lusrlib.patch
+# -Qunused-arguments is invalid for gcc, which is called by some g* crap
+# tools
+Patch1:		libical-3.0.6-no-Qunused-arguments.patch
 BuildRequires:	bison
 Buildrequires:	cmake
 BuildRequires:	flex
