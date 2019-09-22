@@ -7,10 +7,14 @@
 %define libnameglib %mklibname ical-glib %{major}
 %define devname %mklibname ical -d
 %define glibdevname %mklibname ical-glib -d
+%define girmajor 3.0
+%define girname %mklibname ical-gir %{girmajor}
+%define girmajorglib 3.0
+%define girnameglib %mklibname icalglib-gir %{girmajorglib}
 
 Name:		libical
 Version:	3.0.6
-Release:	1
+Release:	2
 Summary:	An implementation of basic iCAL protocols
 License:	LGPLv2+
 Group:		System/Libraries
@@ -25,9 +29,12 @@ Buildrequires:	cmake
 BuildRequires:	flex
 BuildRequires:	ninja
 BuildRequires:	db-devel >= 18.1
+BuildRequires:  vala
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(gtk-doc)
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(vapigen)
 
 %description
 Libical is an Open Source implementation of the IETF's iCalendar
@@ -95,6 +102,33 @@ Calendaring and Scheduling protocols (RFC 2445, 2446, and 2447).
 It parses iCal components and provides a C API for manipulating
 the component properties, parameters, and subcomponents.
 
+
+%package -n %{girname}
+Summary: GObject Introspection interface description for ICal
+Group: System/Libraries
+Requires: %{libname} = %{version}-%{release}
+Conflicts: %{_lib}ical3 < 3.0.5-5
+
+%description -n %{girname}
+GObject Introspection interface description for ICal.
+
+%files -n %{girname}
+%{_libdir}/girepository-1.0/ICal-%{girmajor}.typelib
+
+
+%package -n %{girnameglib}
+Summary: GObject Introspection interface description for ICalGLib
+Group: System/Libraries
+Requires: %{libnameglib} = %{version}-%{release}
+Conflicts: %{_lib}ical-glib3 < 3.0.5-5
+
+%description -n %{girnameglib}
+GObject Introspection interface description for ICalGLib.
+
+%files -n %{girnameglib}
+%{_libdir}/girepository-1.0/ICalGLib-%{girmajorglib}.typelib
+
+
 %package -n %{devname}
 Summary:	Files for developing applications that use libical
 Group:		Development/C
@@ -104,6 +138,8 @@ Requires:	%{libnamess} = %{EVRD}
 Requires:	%{libnamevcal} = %{EVRD}
 Requires:	%{libname_cxx} = %{EVRD}
 Requires:	%{libnamess_cxx} = %{EVRD}
+Requires:	%{girname} = %{version}-%{release}
+Requires:	%{girnameglib} = %{version}-%{release}
 Requires:	db-devel
 Obsoletes:	%mklibname ical 0 -d
 
@@ -124,7 +160,11 @@ and glib.
 
 %prep
 %autosetup -p1
-%cmake -DICAL_ERRORS_ARE_FATAL=false -G Ninja
+%cmake  \ 
+         -DICAL_ERRORS_ARE_FATAL=false \
+         -G Ninja \
+         -DGOBJECT_INTROSPECTION:BOOL=true \
+         -DICAL_GLIB_VAPI:BOOL=true 
 
 %build
 %ninja_build -C build
@@ -160,6 +200,9 @@ and glib.
 %exclude %{_libdir}/libical-glib.a
 %{_libdir}/pkgconfig/libical.pc
 %{_libdir}/cmake/LibIcal
+%{_datadir}/gir-1.0/ICal-%{girmajor}.gir
+%{_datadir}/gir-1.0/ICalGLib-%{girmajorglib}.gir
+%{_datadir}/vala/vapi/libical-glib.vapi
 
 %files -n %{glibdevname}
 %doc %{_datadir}/gtk-doc/html/libical-glib
