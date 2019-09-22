@@ -160,11 +160,11 @@ and glib.
 
 %prep
 %autosetup -p1
-%cmake  \ 
+%cmake  \
          -DICAL_ERRORS_ARE_FATAL=false \
          -G Ninja \
          -DGOBJECT_INTROSPECTION:BOOL=true \
-         -DICAL_GLIB_VAPI:BOOL=true 
+         -DICAL_GLIB_VAPI:BOOL=true
 
 %build
 %ninja_build -C build
