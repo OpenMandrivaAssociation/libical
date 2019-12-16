@@ -13,8 +13,8 @@
 %define girnameglib %mklibname icalglib-gir %{girmajorglib}
 
 Name:		libical
-Version:	3.0.6
-Release:	2
+Version:	3.0.7
+Release:	1
 Summary:	An implementation of basic iCAL protocols
 License:	LGPLv2+
 Group:		System/Libraries
