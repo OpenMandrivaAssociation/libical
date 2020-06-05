@@ -52,8 +52,10 @@ BuildRequires:	pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(vapigen)
 %if %{with compat32}
+BuildRequires:	devel(libpcre)
 BuildRequires:	devel(libglib-2.0)
 BuildRequires:	devel(libxml2)
+BuildRequires:	devel(libffi)
 %endif
 
 %description
