@@ -1,3 +1,11 @@
+# libical is used by bluez,
+# bluez is used by sbc,
+# sbc is used by pulseaudio,
+# pulseaudio is used by wine
+%ifarch %{x86_64}
+%bcond_without compat32
+%endif
+
 %define major 3
 %define libname %mklibname ical %{major}
 %define libnamess %mklibname icalss %{major}
@@ -11,10 +19,18 @@
 %define girname %mklibname ical-gir %{girmajor}
 %define girmajorglib 3.0
 %define girnameglib %mklibname icalglib-gir %{girmajorglib}
+%define lib32name %mklib32name ical %{major}
+%define lib32namess %mklib32name icalss %{major}
+%define lib32namevcal %mklib32name icalvcal %{major}
+%define lib32name_cxx %mklib32name ical_cxx %{major}
+%define lib32namess_cxx %mklib32name icalss_cxx %{major}
+%define lib32nameglib %mklib32name ical-glib %{major}
+%define dev32name %mklib32name ical -d
+%define glib32devname %mklib32name ical-glib -d
 
 Name:		libical
 Version:	3.0.8
-Release:	1
+Release:	2
 Summary:	An implementation of basic iCAL protocols
 License:	LGPLv2+
 Group:		System/Libraries
@@ -35,6 +51,10 @@ BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(vapigen)
+%if %{with compat32}
+BuildRequires:	devel(libglib-2.0)
+BuildRequires:	devel(libxml2)
+%endif
 
 %description
 Libical is an Open Source implementation of the IETF's iCalendar
@@ -132,7 +152,6 @@ GObject Introspection interface description for ICalGLib.
 %package -n %{devname}
 Summary:	Files for developing applications that use libical
 Group:		Development/C
-Provides:	%{name}-devel = %{EVRD}
 Requires:	%{libname} = %{EVRD}
 Requires:	%{libnamess} = %{EVRD}
 Requires:	%{libnamevcal} = %{EVRD}
@@ -158,8 +177,105 @@ The header files and libtool library for
 developing applications that use libical
 and glib.
 
+%if %{with compat32}
+%package -n %{lib32name}
+Summary:	Files for developing applications that use libical (32-bit)
+Group:		System/Libraries
+
+%description -n %{lib32name}
+Libical is an Open Source implementation of the IETF's iCalendar
+Calendaring and Scheduling protocols (RFC 2445, 2446, and 2447).
+It parses iCal components and provides a C API for manipulating
+the component properties, parameters, and subcomponents.
+
+%package -n %{lib32namess}
+Summary:	Files for developing applications that use libical (32-bit)
+Group:		System/Libraries
+
+%description -n %{lib32namess}
+Libical is an Open Source implementation of the IETF's iCalendar
+Calendaring and Scheduling protocols (RFC 2445, 2446, and 2447).
+It parses iCal components and provides a C API for manipulating
+the component properties, parameters, and subcomponents.
+
+%package -n %{lib32namevcal}
+Summary:	Files for developing applications that use libical (32-bit)
+Group:		System/Libraries
+
+%description -n %{lib32namevcal}
+Libical is an Open Source implementation of the IETF's iCalendar
+Calendaring and Scheduling protocols (RFC 2445, 2446, and 2447).
+It parses iCal components and provides a C API for manipulating
+the component properties, parameters, and subcomponents.
+
+%package -n %{lib32name_cxx}
+Summary:	Files for developing applications that use libical (32-bit)
+Group:		System/Libraries
+
+%description -n %{lib32name_cxx}
+Libical is an Open Source implementation of the IETF's iCalendar
+Calendaring and Scheduling protocols (RFC 2445, 2446, and 2447).
+It parses iCal components and provides a C API for manipulating
+the component properties, parameters, and subcomponents.
+
+%package -n %{lib32namess_cxx}
+Summary:	Files for developing applications that use libical (32-bit)
+Group:		System/Libraries
+
+%description -n %{lib32namess_cxx}
+Libical is an Open Source implementation of the IETF's iCalendar
+Calendaring and Scheduling protocols (RFC 2445, 2446, and 2447).
+It parses iCal components and provides a C API for manipulating
+the component properties, parameters, and subcomponents.
+
+%package -n %{lib32nameglib}
+Summary:	Files for developing glib applications that use libical (32-bit)
+Group:		System/Libraries
+
+%description -n %{lib32nameglib}
+Libical is an Open Source implementation of the IETF's iCalendar
+Calendaring and Scheduling protocols (RFC 2445, 2446, and 2447).
+It parses iCal components and provides a C API for manipulating
+the component properties, parameters, and subcomponents.
+
+%package -n %{dev32name}
+Summary:	Files for developing applications that use libical (32-bit)
+Group:		Development/C
+Requires:	%{devname} = %{EVRD}
+Requires:	%{lib32name} = %{EVRD}
+Requires:	%{lib32namess} = %{EVRD}
+Requires:	%{lib32namevcal} = %{EVRD}
+Requires:	%{lib32name_cxx} = %{EVRD}
+Requires:	%{lib32namess_cxx} = %{EVRD}
+
+%description -n %{dev32name}
+The header files and libtool library for
+developing applications that use libical.
+
+%package -n %{glib32devname}
+Summary:	Files for developing glib applications that use libical (32-bit)
+Group:		Development/C
+Requires:	%{glibdevname} = %{EVRD}
+Requires:	%{dev32name} = %{EVRD}
+Requires:	%{lib32nameglib} = %{EVRD}
+
+%description -n %{glib32devname}
+The header files and libtool library for
+developing applications that use libical
+and glib.
+%endif
+
 %prep
 %autosetup -p1
+%if %{with compat32}
+%cmake32  \
+         -DICAL_ERRORS_ARE_FATAL=false \
+         -G Ninja \
+         -DGOBJECT_INTROSPECTION:BOOL=false \
+         -DICAL_GLIB_VAPI:BOOL=false
+cd ..
+%endif
+
 %cmake  \
          -DICAL_ERRORS_ARE_FATAL=false \
          -G Ninja \
@@ -167,9 +283,15 @@ and glib.
          -DICAL_GLIB_VAPI:BOOL=true
 
 %build
+%if %{with compat32}
+%ninja_build -C build32
+%endif
 %ninja_build -C build
 
 %install
+%if %{with compat32}
+%ninja_install -C build32
+%endif
 %ninja_install -C build
 
 %files -n %{libname}
@@ -210,3 +332,36 @@ and glib.
 %{_libdir}/libical-glib.so
 %{_libdir}/libical-glib.a
 %{_libdir}/pkgconfig/libical-glib.pc
+
+%if %{with compat32}
+%files -n %{lib32name}
+%{_prefix}/lib/libical.so.%{major}*
+
+%files -n %{lib32namess}
+%{_prefix}/lib/libicalss.so.%{major}*
+
+%files -n %{lib32namevcal}
+%{_prefix}/lib/libicalvcal.so.%{major}*
+
+%files -n %{lib32name_cxx}
+%{_prefix}/lib/libical_cxx.so.%{major}*
+
+%files -n %{lib32namess_cxx}
+%{_prefix}/lib/libicalss_cxx.so.%{major}*
+
+%files -n %{lib32nameglib}
+%{_prefix}/lib/libical-glib.so.%{major}*
+
+%files -n %{dev32name}
+%{_prefix}/lib/*.a
+%{_prefix}/lib/*.so
+%exclude %{_prefix}/lib/libical-glib.so
+%exclude %{_prefix}/lib/libical-glib.a
+%{_prefix}/lib/pkgconfig/libical.pc
+%{_prefix}/lib/cmake/LibIcal
+
+%files -n %{glib32devname}
+%{_prefix}/lib/libical-glib.so
+%{_prefix}/lib/libical-glib.a
+%{_prefix}/lib/pkgconfig/libical-glib.pc
+%endif
