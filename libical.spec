@@ -30,7 +30,7 @@
 
 Name:		libical
 Version:	3.0.8
-Release:	2
+Release:	3
 Summary:	An implementation of basic iCAL protocols
 License:	LGPLv2+
 Group:		System/Libraries
@@ -41,7 +41,7 @@ Patch0:		libical-3.0.5-no-Lusrlib.patch
 # tools
 Patch1:		libical-3.0.6-no-Qunused-arguments.patch
 BuildRequires:	bison
-Buildrequires:	cmake
+BuildRequires:	cmake
 BuildRequires:	flex
 BuildRequires:	ninja
 BuildRequires:	db-devel >= 18.1
