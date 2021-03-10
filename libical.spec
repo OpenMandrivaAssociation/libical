@@ -29,8 +29,8 @@
 %define glib32devname %mklib32name ical-glib -d
 
 Name:		libical
-Version:	3.0.8
-Release:	3
+Version:	3.0.9
+Release:	1
 Summary:	An implementation of basic iCAL protocols
 License:	LGPLv2+
 Group:		System/Libraries
@@ -40,7 +40,6 @@ Patch0:		libical-3.0.5-no-Lusrlib.patch
 # -Qunused-arguments is invalid for gcc, which is called by some g* crap
 # tools
 Patch1:		libical-3.0.6-no-Qunused-arguments.patch
-Patch2:		libical-3.0.8-icu-68.patch
 BuildRequires:	bison
 BuildRequires:	cmake
 BuildRequires:	flex
@@ -296,6 +295,9 @@ cd ..
 %ninja_install -C build32
 %endif
 %ninja_install -C build
+
+# remove not needed stuff
+rm %{buildroot}/%{_libexecdir}/libical/ical-glib-src-generator
 
 %files -n %{libname}
 %{_libdir}/libical.so.%{major}*
