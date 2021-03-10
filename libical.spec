@@ -296,6 +296,9 @@ cd ..
 %endif
 %ninja_install -C build
 
+# remove not needed stuff
+rm %{buildroot}/%{_libexecdir}/libical/ical-glib-src-generator
+
 %files -n %{libname}
 %{_libdir}/libical.so.%{major}*
 
