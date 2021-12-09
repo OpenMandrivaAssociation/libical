@@ -29,7 +29,7 @@
 %define glib32devname %mklib32name ical-glib -d
 
 Name:		libical
-Version:	3.0.11
+Version:	3.0.12
 Release:	1
 Summary:	An implementation of basic iCAL protocols
 License:	LGPLv2+
