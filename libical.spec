@@ -270,12 +270,17 @@ and glib.
 %prep
 %autosetup -p1
 %if %{with compat32}
+# Don't find lib64/libdb.so.* as a valid BDB...
+sed -i -e 's,"lib64","libNO64",g' cmake/modules/FindBerkeleyDB.cmake
 %cmake32  \
          -DICAL_ERRORS_ARE_FATAL=false \
          -G Ninja \
          -DGOBJECT_INTROSPECTION:BOOL=false \
          -DICAL_GLIB_VAPI:BOOL=false
 cd ..
+# Make 64bit great again
+sed -i -e 's,"libNO64","lib64",g' cmake/modules/FindBerkeleyDB.cmake
+touch -d "2022/01/01 00:01:02" cmake/modules/FindBerkeleyDB.cmake
 %endif
 
 %cmake  \
