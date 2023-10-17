@@ -39,7 +39,7 @@ Source0:	https://github.com/libical/libical/releases/download/v%{version}/libica
 Patch0:		libical-3.0.5-no-Lusrlib.patch
 # -Qunused-arguments is invalid for gcc, which is called by some g* crap
 # tools
-#Patch1:		libical-3.0.6-no-Qunused-arguments.patch
+Patch1:		libical-3.0.6-no-Qunused-arguments.patch
 BuildRequires:	bison
 BuildRequires:	cmake
 BuildRequires:	flex
