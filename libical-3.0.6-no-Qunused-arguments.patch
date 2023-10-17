@@ -1,7 +1,7 @@
-diff -up libical-3.0.6/CMakeLists.txt.omv~ libical-3.0.6/CMakeLists.txt
---- libical-3.0.6/CMakeLists.txt.omv~	2019-09-16 21:47:30.534020450 +0200
-+++ libical-3.0.6/CMakeLists.txt	2019-09-16 21:47:36.453493616 +0200
-@@ -443,9 +443,9 @@ if(CMAKE_COMPILER_IS_GNUCC OR "${CMAKE_C
+diff -uraN libical-3.0.17/CMakeLists.txt omv-libical-3.0.17/CMakeLists.txt
+--- libical-3.0.17/CMakeLists.txt	2023-10-14 15:01:35.000000000 +0200
++++ omv-libical-3.0.17/CMakeLists.txt	2023-10-17 17:04:08.771448973 +0200
+@@ -540,9 +540,9 @@
      set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_XOPEN_SOURCE=500 -D_DEFAULT_SOURCE -D_GNU_SOURCE")
    endif()
  endif()
@@ -11,6 +11,6 @@ diff -up libical-3.0.6/CMakeLists.txt.omv~ libical-3.0.6/CMakeLists.txt
 +#if("${CMAKE_C_COMPILER_ID}" MATCHES "Clang")
 +#  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Qunused-arguments")
 +#endif()
+ set(CMAKE_C_STANDARD 99)
+ set(CMAKE_C_STANDARD_REQUIRED ON)
  
- if(CMAKE_COMPILER_IS_GNUCXX OR "${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
-   include(CheckCXXCompilerFlag)
