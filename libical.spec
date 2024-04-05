@@ -29,8 +29,8 @@
 %define glib32devname %mklib32name ical-glib -d
 
 Name:		libical
-Version:	3.0.17
-Release:	2
+Version:	3.0.18
+Release:	1
 Summary:	An implementation of basic iCAL protocols
 License:	LGPLv2+
 Group:		System/Libraries
@@ -44,7 +44,6 @@ BuildRequires:	bison
 BuildRequires:	cmake
 BuildRequires:	flex
 BuildRequires:	ninja
-BuildRequires:	db-devel >= 18.1
 BuildRequires:  vala
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(libxml-2.0)
@@ -52,7 +51,6 @@ BuildRequires:	pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(vapigen)
 %if %{with compat32}
-BuildRequires:	devel(libpcre)
 BuildRequires:	devel(libglib-2.0)
 BuildRequires:	devel(libxml2)
 BuildRequires:	devel(libffi)
@@ -161,7 +159,6 @@ Requires:	%{libname_cxx} = %{EVRD}
 Requires:	%{libnamess_cxx} = %{EVRD}
 Requires:	%{girname} = %{version}-%{release}
 Requires:	%{girnameglib} = %{version}-%{release}
-Requires:	db-devel
 Obsoletes:	%mklibname ical 0 -d
 
 %description -n %{devname}
