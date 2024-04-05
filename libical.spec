@@ -47,6 +47,7 @@ BuildRequires:	ninja
 BuildRequires:  vala
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(libxml-2.0)
+BuildRequires:	pkgconfig(liblzma)
 BuildRequires:	pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(vapigen)
@@ -54,6 +55,7 @@ BuildRequires:  pkgconfig(vapigen)
 BuildRequires:	devel(libglib-2.0)
 BuildRequires:	devel(libxml2)
 BuildRequires:	devel(libffi)
+BuildRequires:	devel(liblzma)
 %endif
 
 %description
