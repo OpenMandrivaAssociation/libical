@@ -30,7 +30,7 @@
 
 Name:		libical
 Version:	3.0.18
-Release:	4
+Release:	5
 Summary:	An implementation of basic iCAL protocols
 License:	LGPLv2+
 Group:		System/Libraries
