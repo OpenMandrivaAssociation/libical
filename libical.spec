@@ -30,7 +30,7 @@
 
 Name:		libical
 Version:	3.0.20
-Release:	3
+Release:	4
 Summary:	An implementation of basic iCAL protocols
 License:	LGPLv2+
 Group:		System/Libraries
@@ -40,22 +40,22 @@ Patch0:		libical-3.0.5-no-Lusrlib.patch
 # -Qunused-arguments is invalid for gcc, which is called by some g* crap
 # tools
 Patch1:		libical-3.0.6-no-Qunused-arguments.patch
-BuildRequires:	bison
-BuildRequires:	cmake
-BuildRequires:	flex
-BuildRequires:	ninja
-BuildRequires:  vala
-BuildRequires:	pkgconfig(glib-2.0)
-BuildRequires:	pkgconfig(libxml-2.0)
-BuildRequires:	pkgconfig(liblzma)
-BuildRequires:	pkgconfig(gtk-doc)
-BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(vapigen)
+BuildRequires: bison
+BuildRequires: cmake
+BuildRequires: flex
+BuildRequires: ninja
+BuildRequires: vala
+BuildRequires: pkgconfig(glib-2.0)
+BuildRequires: pkgconfig(libxml-2.0) >= 2.15.2
+BuildRequires: pkgconfig(liblzma)
+BuildRequires: pkgconfig(gtk-doc)
+BuildRequires: pkgconfig(gobject-introspection-1.0)
+BuildRequires: pkgconfig(vapigen)
 %if %{with compat32}
-BuildRequires:	devel(libglib-2.0)
-BuildRequires:	devel(libxml2)
-BuildRequires:	devel(libffi)
-BuildRequires:	devel(liblzma)
+BuildRequires: devel(libglib-2.0)
+BuildRequires: devel(libxml2) >= 2.15.2
+BuildRequires: devel(libffi)
+BuildRequires: devel(liblzma)
 %endif
 
 %description
