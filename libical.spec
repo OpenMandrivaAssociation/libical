@@ -29,8 +29,8 @@
 %define glib32devname %mklib32name ical-glib -d
 
 Name:		libical
-Version:	3.0.20
-Release:	4
+Version:	4.0.4
+Release:	1
 Summary:	An implementation of basic iCAL protocols
 License:	LGPLv2+
 Group:		System/Libraries
@@ -272,10 +272,10 @@ and glib.
 # Don't find lib64/libdb.so.* as a valid BDB...
 sed -i -e 's,"lib64","libNO64",g' cmake/modules/FindBerkeleyDB.cmake
 %cmake32  \
-         -DICAL_ERRORS_ARE_FATAL=false \
          -G Ninja \
-         -DGOBJECT_INTROSPECTION:BOOL=false \
-         -DICAL_GLIB_VAPI:BOOL=false
+         -DLIBICAL_GOBJECT_INTROSPECTION:BOOL=false \
+         -DLIBICAL_GLIB_VAPI:BOOL=false \
+         -DLIBICAL_GLIB_BUILD_DOCS:BOOL=false
 cd ..
 # Make 64bit great again
 sed -i -e 's,"libNO64","lib64",g' cmake/modules/FindBerkeleyDB.cmake
@@ -283,10 +283,9 @@ touch -d "2022/01/01 00:01:02" cmake/modules/FindBerkeleyDB.cmake
 %endif
 
 %cmake  \
-         -DICAL_ERRORS_ARE_FATAL=false \
          -G Ninja \
-         -DGOBJECT_INTROSPECTION:BOOL=true \
-         -DICAL_GLIB_VAPI:BOOL=true
+         -DLIBICAL_GOBJECT_INTROSPECTION:BOOL=true \
+         -DLIBICAL_GLIB_VAPI:BOOL=true
 
 %build
 %if %{with compat32}

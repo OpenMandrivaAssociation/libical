@@ -1,19 +1,19 @@
-diff -up libical-3.0.5/libical.pc.in.omv~ libical-3.0.5/libical.pc.in
---- libical-3.0.5/libical.pc.in.omv~	2019-07-28 18:24:10.985062528 +0200
-+++ libical-3.0.5/libical.pc.in	2019-07-28 18:26:04.166361720 +0200
-@@ -6,7 +6,6 @@ includedir=@includedir@
- Name: libical
- Description: An implementation of basic iCAL protocols
- Version: @LIBICAL_LIB_VERSION_STRING@
--Libs: -L${libdir} -lical -licalss -licalvcal
-+Libs: -lical -licalss -licalvcal
- Libs.private: @PTHREAD_LIBS@
- @REQUIRES_PRIVATE_ICU@
+diff -up libical-4.0.4/src/libical/libical.pc.in.omv~ libical-4.0.4/src/libical/libical.pc.in
+--- libical-4.0.4/src/libical/libical.pc.in.omv~	2026-07-25 13:22:56.000000000 +0200
++++ libical-4.0.4/src/libical/libical.pc.in	2026-08-02 20:50:48.579208109 +0200
+@@ -9,5 +9,4 @@ Name: libical
+ Description: @CMAKE_PROJECT_DESCRIPTION@
+ URL: @CMAKE_PROJECT_HOMEPAGE_URL@
+ Version: @CMAKE_PROJECT_VERSION@
+-Libs: -L${libdir} -lical@PTHREAD_LIBS_PRIVATE@@REQUIRES_PRIVATE_ICU@
 -Cflags: -I${includedir}
-diff -up libical-3.0.5/src/libical-glib/libical-glib.pc.in.omv~ libical-3.0.5/src/libical-glib/libical-glib.pc.in
---- libical-3.0.5/src/libical-glib/libical-glib.pc.in.omv~	2019-07-28 18:26:10.019325559 +0200
-+++ libical-3.0.5/src/libical-glib/libical-glib.pc.in	2019-07-28 18:26:28.104213875 +0200
-@@ -1,11 +1,7 @@
++Libs: -lical@PTHREAD_LIBS_PRIVATE@@REQUIRES_PRIVATE_ICU@
+diff -up libical-4.0.4/src/libical-glib/libical-glib.pc.in.omv~ libical-4.0.4/src/libical-glib/libical-glib.pc.in
+--- libical-4.0.4/src/libical-glib/libical-glib.pc.in.omv~	2026-07-25 13:22:56.000000000 +0200
++++ libical-4.0.4/src/libical-glib/libical-glib.pc.in	2026-08-02 20:50:48.595489368 +0200
+@@ -2,13 +2,9 @@
+ # SPDX-License-Identifier: LGPL-2.1-only OR MPL-2.0
+ 
  prefix=@prefix@
 -exec_prefix=@exec_prefix@
 -libdir=@libdir@
@@ -21,7 +21,7 @@ diff -up libical-3.0.5/src/libical-glib/libical-glib.pc.in.omv~ libical-3.0.5/sr
  
  Name: libical-glib
  Description: A GObject interface of the libical library
- Version: @LIBICAL_LIB_VERSION_STRING@
+ Version: @CMAKE_PROJECT_VERSION@
  Requires: glib-2.0, gobject-2.0, libical
 -Cflags: -I${includedir}
 -Libs: -L${libdir} -lical-glib

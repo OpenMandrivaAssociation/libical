@@ -1,16 +1,16 @@
-diff -uraN libical-3.0.17/CMakeLists.txt omv-libical-3.0.17/CMakeLists.txt
---- libical-3.0.17/CMakeLists.txt	2023-10-14 15:01:35.000000000 +0200
-+++ omv-libical-3.0.17/CMakeLists.txt	2023-10-17 17:04:08.771448973 +0200
-@@ -540,9 +540,9 @@
+diff -uraN libical-4.0.4/CMakeLists.txt omv-libical-4.0.4/CMakeLists.txt
+--- libical-4.0.4/CMakeLists.txt	2026-07-25 13:22:56.000000000 +0200
++++ omv-libical-4.0.4/CMakeLists.txt	2026-08-02 20:51:02.192310578 +0200
+@@ -785,9 +785,9 @@
      set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_XOPEN_SOURCE=500 -D_DEFAULT_SOURCE -D_GNU_SOURCE")
    endif()
  endif()
--if("${CMAKE_C_COMPILER_ID}" MATCHES "Clang")
+-if(CMAKE_C_COMPILER_IS_CLANG)
 -  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Qunused-arguments")
 -endif()
-+#if("${CMAKE_C_COMPILER_ID}" MATCHES "Clang")
++#if(CMAKE_C_COMPILER_IS_CLANG)
 +#  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Qunused-arguments")
 +#endif()
- set(CMAKE_C_STANDARD 99)
- set(CMAKE_C_STANDARD_REQUIRED ON)
  
+ set(CMAKE_CXX_COMPILER_IS_CLANG False)
+ set(CMAKE_CXX_COMPILER_IS_GCC False)
