@@ -50,6 +50,7 @@ BuildRequires: pkgconfig(libxml-2.0) >= 2.15.2
 BuildRequires: pkgconfig(liblzma)
 BuildRequires: pkgconfig(gtk-doc)
 BuildRequires: pkgconfig(gobject-introspection-1.0)
+BuildRequires: pkgconfig(gi-docgen)
 BuildRequires: pkgconfig(vapigen)
 %if %{with compat32}
 BuildRequires: devel(libglib-2.0)
