@@ -56,6 +56,11 @@ BuildRequires: devel(libglib-2.0)
 BuildRequires: devel(libxml2) >= 2.15.2
 BuildRequires: devel(libffi)
 BuildRequires: devel(liblzma)
+BuildRequires:	cross-i686-openmandriva-linux-gnu-binutils
+BuildRequires:	cross-i686-openmandriva-linux-gnu-libc
+BuildRequires:	cross-i686-openmandriva-linux-gnu-gcc
+BuildRequires:	cross-i686-openmandriva-linux-gnu-kernel-headers
+BuildRequires:	cross-i686-openmandriva-linux-gnu-clang
 %endif
 
 %description
@@ -275,7 +280,8 @@ sed -i -e 's,"lib64","libNO64",g' cmake/modules/FindBerkeleyDB.cmake
          -G Ninja \
          -DLIBICAL_GOBJECT_INTROSPECTION:BOOL=false \
          -DLIBICAL_GLIB_VAPI:BOOL=false \
-         -DLIBICAL_GLIB_BUILD_DOCS:BOOL=false
+         -DLIBICAL_GLIB_BUILD_DOCS:BOOL=false \
+         -DLIBICAL_JAVA_BINDINGS=False
 cd ..
 # Make 64bit great again
 sed -i -e 's,"libNO64","lib64",g' cmake/modules/FindBerkeleyDB.cmake
@@ -285,7 +291,8 @@ touch -d "2022/01/01 00:01:02" cmake/modules/FindBerkeleyDB.cmake
 %cmake  \
          -G Ninja \
          -DLIBICAL_GOBJECT_INTROSPECTION:BOOL=true \
-         -DLIBICAL_GLIB_VAPI:BOOL=true
+         -DLIBICAL_GLIB_VAPI:BOOL=true \
+         -DLIBICAL_JAVA_BINDINGS=False
 
 %build
 %if %{with compat32}
