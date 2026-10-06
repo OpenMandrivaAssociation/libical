@@ -29,7 +29,7 @@
 %define glib32devname %mklib32name ical-glib -d
 
 Name:		libical
-Version:	4.0.4
+Version:	4.0.6
 Release:	1
 Summary:	An implementation of basic iCAL protocols
 License:	LGPLv2+
@@ -56,6 +56,11 @@ BuildRequires: devel(libglib-2.0)
 BuildRequires: devel(libxml2) >= 2.15.2
 BuildRequires: devel(libffi)
 BuildRequires: devel(liblzma)
+BuildRequires:	cross-i686-openmandriva-linux-gnu-binutils
+BuildRequires:	cross-i686-openmandriva-linux-gnu-libc
+BuildRequires:	cross-i686-openmandriva-linux-gnu-gcc
+BuildRequires:	cross-i686-openmandriva-linux-gnu-kernel-headers
+BuildRequires:	cross-i686-openmandriva-linux-gnu-clang
 %endif
 
 %description
