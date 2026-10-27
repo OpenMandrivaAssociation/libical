@@ -35,8 +35,7 @@
 %define girmajorglib 4.0
 %define girnameglib %mklibname icalglib-gir %{girmajorglib}
 %define oldgirnameglib %mklibname icalglib-gir 3.0
-%define lib32name %mklib32name ical
-%define oldlib32name %mklib32name ical 4
+%define lib32name %mklib32name ical %{major}
 %define olderlib32name %mklib32name ical 3
 %define lib32namess %mklib32name icalss
 %define oldlib32namess %mklib32name icalss 4
@@ -244,7 +243,6 @@ and glib.
 Summary:	Files for developing applications that use libical (32-bit)
 Group:		System/Libraries
 %rename %{oldlib32name}
-%rename %{olderlib32name}
 
 %description -n %{lib32name}
 Libical is an Open Source implementation of the IETF's iCalendar
