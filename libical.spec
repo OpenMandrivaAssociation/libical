@@ -6,22 +6,24 @@
 %bcond_without compat32
 %endif
 
-%define major 3
+%define major 4
 %define libname %mklibname ical %{major}
 %define libnamess %mklibname icalss %{major}
 %define libnamevcal %mklibname icalvcal %{major}
+%define libnamevcard %mklibname icalvcard %{major}
 %define libname_cxx %mklibname ical_cxx %{major}
 %define libnamess_cxx %mklibname icalss_cxx %{major}
 %define libnameglib %mklibname ical-glib %{major}
 %define devname %mklibname ical -d
 %define glibdevname %mklibname ical-glib -d
-%define girmajor 3.0
+%define girmajor 4.0
 %define girname %mklibname ical-gir %{girmajor}
-%define girmajorglib 3.0
+%define girmajorglib 4.0
 %define girnameglib %mklibname icalglib-gir %{girmajorglib}
 %define lib32name %mklib32name ical %{major}
 %define lib32namess %mklib32name icalss %{major}
 %define lib32namevcal %mklib32name icalvcal %{major}
+%define lib32namevcard %mklib32name icalvcard %{major}
 %define lib32name_cxx %mklib32name ical_cxx %{major}
 %define lib32namess_cxx %mklib32name icalss_cxx %{major}
 %define lib32nameglib %mklib32name ical-glib %{major}
@@ -100,6 +102,16 @@ Calendaring and Scheduling protocols (RFC 2445, 2446, and 2447).
 It parses iCal components and provides a C API for manipulating
 the component properties, parameters, and subcomponents.
 
+%package -n %{libnamevcard}
+Summary:	Files for developing applications that use libical
+Group:		System/Libraries
+
+%description -n %{libnamevcard}
+Libical is an Open Source implementation of the IETF's iCalendar
+Calendaring and Scheduling protocols (RFC 2445, 2446, and 2447).
+It parses iCal components and provides a C API for manipulating
+the component properties, parameters, and subcomponents.
+
 %package -n %{libname_cxx}
 Summary:	Files for developing applications that use libical
 Group:		System/Libraries
@@ -163,6 +175,7 @@ Group:		Development/C
 Requires:	%{libname} = %{EVRD}
 Requires:	%{libnamess} = %{EVRD}
 Requires:	%{libnamevcal} = %{EVRD}
+Requires:	%{libnamevcard} = %{EVRD}
 Requires:	%{libname_cxx} = %{EVRD}
 Requires:	%{libnamess_cxx} = %{EVRD}
 Requires:	%{girname} = %{version}-%{release}
@@ -215,6 +228,16 @@ Calendaring and Scheduling protocols (RFC 2445, 2446, and 2447).
 It parses iCal components and provides a C API for manipulating
 the component properties, parameters, and subcomponents.
 
+%package -n %{lib32namevcard}
+Summary:	Files for developing applications that use libical (32-bit)
+Group:		System/Libraries
+
+%description -n %{lib32namevcard}
+Libical is an Open Source implementation of the IETF's iCalendar
+Calendaring and Scheduling protocols (RFC 2445, 2446, and 2447).
+It parses iCal components and provides a C API for manipulating
+the component properties, parameters, and subcomponents.
+
 %package -n %{lib32name_cxx}
 Summary:	Files for developing applications that use libical (32-bit)
 Group:		System/Libraries
@@ -252,6 +275,7 @@ Requires:	%{devname} = %{EVRD}
 Requires:	%{lib32name} = %{EVRD}
 Requires:	%{lib32namess} = %{EVRD}
 Requires:	%{lib32namevcal} = %{EVRD}
+Requires:	%{lib32namevcard} = %{EVRD}
 Requires:	%{lib32name_cxx} = %{EVRD}
 Requires:	%{lib32namess_cxx} = %{EVRD}
 
@@ -319,6 +343,9 @@ rm %{buildroot}/%{_libexecdir}/libical/ical-glib-src-generator
 %files -n %{libnamevcal}
 %{_libdir}/libicalvcal.so.%{major}*
 
+%files -n %{libnamevcard}
+%{_libdir}/libicalvcard.so.%{major}*
+
 %files -n %{libname_cxx}
 %{_libdir}/libical_cxx.so.%{major}*
 
@@ -332,21 +359,21 @@ rm %{buildroot}/%{_libexecdir}/libical/ical-glib-src-generator
 %doc TODO TEST THANKS
 %doc doc/UsingLibical*
 %{_includedir}/libical
-%{_libdir}/*.a
 %{_libdir}/*.so
 %exclude %{_libdir}/libical-glib.so
-%exclude %{_libdir}/libical-glib.a
 %{_libdir}/pkgconfig/libical.pc
+%{_libdir}/pkgconfig/libicalss.pc
+%{_libdir}/pkgconfig/libicalvcal.pc
+%{_libdir}/pkgconfig/libicalvcard.pc
 %{_libdir}/cmake/LibIcal
 %{_datadir}/gir-1.0/ICal-%{girmajor}.gir
 %{_datadir}/gir-1.0/ICalGLib-%{girmajorglib}.gir
 %{_datadir}/vala/vapi/libical-glib.vapi
 
 %files -n %{glibdevname}
-%doc %{_datadir}/gtk-doc/html/libical-glib
+%doc %{_docdir}/libical-glib
 %{_includedir}/libical-glib
 %{_libdir}/libical-glib.so
-%{_libdir}/libical-glib.a
 %{_libdir}/pkgconfig/libical-glib.pc
 
 %if %{with compat32}
@@ -359,6 +386,9 @@ rm %{buildroot}/%{_libexecdir}/libical/ical-glib-src-generator
 %files -n %{lib32namevcal}
 %{_prefix}/lib/libicalvcal.so.%{major}*
 
+%files -n %{lib32namevcard}
+%{_prefix}/lib/libicalvcard.so.%{major}*
+
 %files -n %{lib32name_cxx}
 %{_prefix}/lib/libical_cxx.so.%{major}*
 
@@ -369,15 +399,15 @@ rm %{buildroot}/%{_libexecdir}/libical/ical-glib-src-generator
 %{_prefix}/lib/libical-glib.so.%{major}*
 
 %files -n %{dev32name}
-%{_prefix}/lib/*.a
 %{_prefix}/lib/*.so
 %exclude %{_prefix}/lib/libical-glib.so
-%exclude %{_prefix}/lib/libical-glib.a
 %{_prefix}/lib/pkgconfig/libical.pc
+%{_prefix}/lib/pkgconfig/libicalss.pc
+%{_prefix}/lib/pkgconfig/libicalvcal.pc
+%{_prefix}/lib/pkgconfig/libicalvcard.pc
 %{_prefix}/lib/cmake/LibIcal
 
 %files -n %{glib32devname}
 %{_prefix}/lib/libical-glib.so
-%{_prefix}/lib/libical-glib.a
 %{_prefix}/lib/pkgconfig/libical-glib.pc
 %endif
