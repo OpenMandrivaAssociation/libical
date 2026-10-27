@@ -242,7 +242,7 @@ and glib.
 %package -n %{lib32name}
 Summary:	Files for developing applications that use libical (32-bit)
 Group:		System/Libraries
-%rename %{oldlib32name}
+%rename %{olderlib32name}
 
 %description -n %{lib32name}
 Libical is an Open Source implementation of the IETF's iCalendar
