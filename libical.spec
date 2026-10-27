@@ -356,8 +356,7 @@ rm %{buildroot}/%{_libexecdir}/libical/ical-glib-src-generator
 %{_libdir}/libical-glib.so.%{major}*
 
 %files -n %{devname}
-%doc TODO TEST THANKS
-%doc doc/UsingLibical*
+%doc README.md CHANGELOG.md
 %{_includedir}/libical
 %{_libdir}/*.so
 %exclude %{_libdir}/libical-glib.so
