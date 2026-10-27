@@ -7,32 +7,60 @@
 %endif
 
 %define major 4
-%define libname %mklibname ical %{major}
-%define libnamess %mklibname icalss %{major}
-%define libnamevcal %mklibname icalvcal %{major}
-%define libnamevcard %mklibname icalvcard %{major}
-%define libname_cxx %mklibname ical_cxx %{major}
-%define libnamess_cxx %mklibname icalss_cxx %{major}
-%define libnameglib %mklibname ical-glib %{major}
+%define libname %mklibname ical
+%define oldlibname %mklibname ical 4
+%define olderlibname %mklibname ical 3
+%define libnamess %mklibname icalss
+%define oldlibnamess %mklibname icalss 4
+%define olderlibnamess %mklibname icalss 3
+%define libnamevcal %mklibname icalvcal
+%define oldlibnamevcal %mklibname icalvcal 4
+%define olderlibnamevcal %mklibname icalvcal 3
+%define libnamevcard %mklibname icalvcard
+%define oldlibnamevcard %mklibname icalvcard 4
+%define libname_cxx %mklibname ical_cxx
+%define oldlibname_cxx %mklibname ical_cxx 4
+%define olderlibname_cxx %mklibname ical_cxx 3
+%define libnamess_cxx %mklibname icalss_cxx
+%define oldlibnamess_cxx %mklibname icalss_cxx 4
+%define olderlibnamess_cxx %mklibname icalss_cxx 3
+%define libnameglib %mklibname ical-glib
+%define oldlibnameglib %mklibname ical-glib 4
+%define olderlibnameglib %mklibname ical-glib 3
 %define devname %mklibname ical -d
 %define glibdevname %mklibname ical-glib -d
 %define girmajor 4.0
 %define girname %mklibname ical-gir %{girmajor}
+%define oldgirname %mklibname ical-gir 3.0
 %define girmajorglib 4.0
 %define girnameglib %mklibname icalglib-gir %{girmajorglib}
-%define lib32name %mklib32name ical %{major}
-%define lib32namess %mklib32name icalss %{major}
-%define lib32namevcal %mklib32name icalvcal %{major}
-%define lib32namevcard %mklib32name icalvcard %{major}
-%define lib32name_cxx %mklib32name ical_cxx %{major}
-%define lib32namess_cxx %mklib32name icalss_cxx %{major}
-%define lib32nameglib %mklib32name ical-glib %{major}
+%define oldgirnameglib %mklibname icalglib-gir 3.0
+%define lib32name %mklib32name ical
+%define oldlib32name %mklib32name ical 4
+%define olderlib32name %mklib32name ical 3
+%define lib32namess %mklib32name icalss
+%define oldlib32namess %mklib32name icalss 4
+%define olderlib32namess %mklib32name icalss 3
+%define lib32namevcal %mklib32name icalvcal
+%define oldlib32namevcal %mklib32name icalvcal 4
+%define olderlib32namevcal %mklib32name icalvcal 3
+%define lib32namevcard %mklib32name icalvcard
+%define oldlib32namevcard %mklib32name icalvcard 4
+%define lib32name_cxx %mklib32name ical_cxx
+%define oldlib32name_cxx %mklib32name ical_cxx 4
+%define olderlib32name_cxx %mklib32name ical_cxx 3
+%define lib32namess_cxx %mklib32name icalss_cxx
+%define oldlib32namess_cxx %mklib32name icalss_cxx 4
+%define olderlib32namess_cxx %mklib32name icalss_cxx 3
+%define lib32nameglib %mklib32name ical-glib
+%define oldlib32nameglib %mklib32name ical-glib 4
+%define olderlib32nameglib %mklib32name ical-glib 3
 %define dev32name %mklib32name ical -d
 %define glib32devname %mklib32name ical-glib -d
 
 Name:		libical
 Version:	4.0.4
-Release:	3
+Release:	4
 Summary:	An implementation of basic iCAL protocols
 License:	LGPLv2+
 Group:		System/Libraries
@@ -75,6 +103,8 @@ the component properties, parameters, and subcomponents.
 %package -n %{libname}
 Summary:	Files for developing applications that use libical
 Group:		System/Libraries
+%rename %{oldlibname}
+%rename %{olderlibname}
 
 %description -n %{libname}
 Libical is an Open Source implementation of the IETF's iCalendar
@@ -85,6 +115,8 @@ the component properties, parameters, and subcomponents.
 %package -n %{libnamess}
 Summary:	Files for developing applications that use libical
 Group:		System/Libraries
+%rename %{oldlibnamess}
+%rename %{olderlibnamess}
 
 %description -n %{libnamess}
 Libical is an Open Source implementation of the IETF's iCalendar
@@ -95,6 +127,8 @@ the component properties, parameters, and subcomponents.
 %package -n %{libnamevcal}
 Summary:	Files for developing applications that use libical
 Group:		System/Libraries
+%rename %{oldlibnamevcal}
+%rename %{olderlibnamevcal}
 
 %description -n %{libnamevcal}
 Libical is an Open Source implementation of the IETF's iCalendar
@@ -115,6 +149,8 @@ the component properties, parameters, and subcomponents.
 %package -n %{libname_cxx}
 Summary:	Files for developing applications that use libical
 Group:		System/Libraries
+%rename %{oldlibname_cxx}
+%rename %{olderlibname_cxx}
 
 %description -n %{libname_cxx}
 Libical is an Open Source implementation of the IETF's iCalendar
@@ -125,6 +161,8 @@ the component properties, parameters, and subcomponents.
 %package -n %{libnamess_cxx}
 Summary:	Files for developing applications that use libical
 Group:		System/Libraries
+%rename %{oldlibnamess_cxx}
+%rename %{olderlibnamess_cxx}
 
 %description -n %{libnamess_cxx}
 Libical is an Open Source implementation of the IETF's iCalendar
@@ -135,6 +173,8 @@ the component properties, parameters, and subcomponents.
 %package -n %{libnameglib}
 Summary:	Files for developing glib applications that use libical
 Group:		System/Libraries
+%rename %{oldlibnameglib}
+%rename %{olderlibnameglib}
 
 %description -n %{libnameglib}
 Libical is an Open Source implementation of the IETF's iCalendar
@@ -148,6 +188,7 @@ Summary: GObject Introspection interface description for ICal
 Group: System/Libraries
 Requires: %{libname} = %{version}-%{release}
 Conflicts: %{_lib}ical3 < 3.0.5-5
+%rename %{oldgirname}
 
 %description -n %{girname}
 GObject Introspection interface description for ICal.
@@ -161,6 +202,7 @@ Summary: GObject Introspection interface description for ICalGLib
 Group: System/Libraries
 Requires: %{libnameglib} = %{version}-%{release}
 Conflicts: %{_lib}ical-glib3 < 3.0.5-5
+%rename %{oldgirnameglib}
 
 %description -n %{girnameglib}
 GObject Introspection interface description for ICalGLib.
@@ -201,6 +243,8 @@ and glib.
 %package -n %{lib32name}
 Summary:	Files for developing applications that use libical (32-bit)
 Group:		System/Libraries
+%rename %{oldlib32name}
+%rename %{olderlib32name}
 
 %description -n %{lib32name}
 Libical is an Open Source implementation of the IETF's iCalendar
@@ -211,6 +255,8 @@ the component properties, parameters, and subcomponents.
 %package -n %{lib32namess}
 Summary:	Files for developing applications that use libical (32-bit)
 Group:		System/Libraries
+%rename %{oldlib32namess}
+%rename %{olderlib32namess}
 
 %description -n %{lib32namess}
 Libical is an Open Source implementation of the IETF's iCalendar
@@ -221,6 +267,8 @@ the component properties, parameters, and subcomponents.
 %package -n %{lib32namevcal}
 Summary:	Files for developing applications that use libical (32-bit)
 Group:		System/Libraries
+%rename %{oldlib32namevcal}
+%rename %{olderlib32namevcal}
 
 %description -n %{lib32namevcal}
 Libical is an Open Source implementation of the IETF's iCalendar
@@ -231,6 +279,7 @@ the component properties, parameters, and subcomponents.
 %package -n %{lib32namevcard}
 Summary:	Files for developing applications that use libical (32-bit)
 Group:		System/Libraries
+%rename %{oldlib32namevcard}
 
 %description -n %{lib32namevcard}
 Libical is an Open Source implementation of the IETF's iCalendar
@@ -241,6 +290,8 @@ the component properties, parameters, and subcomponents.
 %package -n %{lib32name_cxx}
 Summary:	Files for developing applications that use libical (32-bit)
 Group:		System/Libraries
+%rename %{oldlib32name_cxx}
+%rename %{olderlib32name_cxx}
 
 %description -n %{lib32name_cxx}
 Libical is an Open Source implementation of the IETF's iCalendar
@@ -251,6 +302,8 @@ the component properties, parameters, and subcomponents.
 %package -n %{lib32namess_cxx}
 Summary:	Files for developing applications that use libical (32-bit)
 Group:		System/Libraries
+%rename %{oldlib32namess_cxx}
+%rename %{olderlib32namess_cxx}
 
 %description -n %{lib32namess_cxx}
 Libical is an Open Source implementation of the IETF's iCalendar
@@ -261,6 +314,8 @@ the component properties, parameters, and subcomponents.
 %package -n %{lib32nameglib}
 Summary:	Files for developing glib applications that use libical (32-bit)
 Group:		System/Libraries
+%rename %{oldlib32nameglib}
+%rename %{olderlib32nameglib}
 
 %description -n %{lib32nameglib}
 Libical is an Open Source implementation of the IETF's iCalendar
